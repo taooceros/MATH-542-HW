@@ -97,7 +97,7 @@
 #proof[
   #let tor(M) = $"Tor"(#M)$
 
-  Consider the zero divisor $r_1, r_2 in R$. We have $r_1, r_2 != 0 and r_1 r_2 = 0$. Then consider any element $m in M$, $r_2 r_1 m = 0 => r_1 m in tor(M)$. Then it suffices to show that $r_1 m != 0$.
+  Consider the zero divisor $r_1, r_2 in R$. We have $r_1, r_2 != 0 and r_1 r_2 = 0$. Then consider any non-zero element $m in M$, $r_2 r_1 m = 0 => r_1 m in tor(M)$. Then it suffices to show that $r_1 m != 0$.
 
   However, if $r_1 m = 0$, then $m in tor(M)$, which also satisfy the requirement.
 
