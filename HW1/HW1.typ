@@ -183,8 +183,45 @@ Let $A$ be any $ZZ$-module, let $a$ be any element of $A$ and let $n$ be a posit
 
 #proof[
   From Previous statement, we have each $phi_a : ZZ\/n ZZ -> A$ correspoinded to a set of $a$ such that $n a = 0$.
+
+  #let hom = $"Hom"_(ZZ) (ZZ\/n ZZ, A)$
+  #let znz = $ZZ\/n ZZ$
+
+  We want to prove $forall psi in hom : exists a in A : psi = phi_a $
+
+  For $psi$ to be in $hom$, we will have the property that
+
+  $forall x in znz, z in ZZ : z psi(x) = psi(z x)$
+
+  Therefore, $z psi(x) = overline(z) psi (x)$.
+
+  Therefore, $psi(x)$ must have the property that $n psi(x) = 0$, which fits exactly into the $a$ we have.
 ]
 
 ==
 
 Exhibit all $ZZ$-module homomorphisms from $ZZ\/30ZZ$ to $ZZ\/21ZZ$.
+
+#proof[
+  By previous exercise, it suffices to find all $a in ZZ\/21ZZ$ such that $30 a = 0 => 9a = 0$.
+
+  We have $a_1 = 7, a_2 = 14, a_3 = 0$
+]
+
+= Bonus
+
+Given a ring $R$, the opposite ring $R^"op"$ is the ring with all the same elements, where addition is defined identically, but for which $x dot^"op" y := y dot x$ where $dot$ is multiplciation in $R$ and $dot^"op"$ is the multiplication in $R^"op"$. Take $R$ as a left $R$-module and show that $"Hom"_(R-"Mod")(R,R)$ is isomorphic to $R^"op"$ as a ring.
+
+#proof[
+
+]
+
+#[
+  #let op = [op]
+
+  Show that if $R = "Mat"_(n times n) (k)$ is the ring of $n times n$ matrices with entries in a field $k$, then $R^"op" cong "Mat"_(n times n) (k^op)$, where $k^op$ is the opposite field of $k$, then $R = "Mat"_(n times n) (k)$ is the ring of $n times n$ matrics with entries in a field $k$, then $R^"op" cong R$ where the isomophism is given by sending a matrix to its transpose.
+]
+
+#proof[
+  
+]
