@@ -174,9 +174,9 @@
 ==
 
 #proof[
-  Consider a matrix $mat(1,0;0,-1)$ that has no eigenvector in $RR^2$. Then we have no submodule for this module.
+  Consider a matrix $mat(0,1;-1,0)$ that has no eigenvector in $RR^2$. Then we have no submodule for this module.
 
-  $"End"_R (M)$ is all the linear transformation that commute with $x$, and for this case it is $mat(a,b;b,-a)$, and thus we can just send this to $a+b i$.
+  $"End"_R (M)$ is all the linear transformation that commute with $x$, and for this case it is $mat(a,b;-b,a)$, and thus we can just send this to $a+b i$.
 ]
 
 =
