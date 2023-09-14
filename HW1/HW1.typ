@@ -7,8 +7,6 @@
   authors: ("Hongtao Zhang",),
 )
 
-#import "@preview/lemmify:0.1.2": *
-
 #let (
   theorem,
   lemma,
@@ -16,11 +14,19 @@
   remark,
   proposition,
   example,
-  proof,
-  rules: thm-rules,
-) = default-theorems("thm-group", lang: "en")
+  proof
+) = (
+  theorem,
+  lemma,
+  corollary,
+  remark,
+  proposition,
+  example,
+  proof
+)
 
 #show: thm-rules
+
 
 
 =
@@ -140,7 +146,17 @@
   
   Therefore, $exists g : f compose g = g compose f = id$. It suffices to prove that $g$ is a R-module homomorphism.
 
-  Because $f$ is a R-module homomorphism, $forall m_1, m_2 in M, r in R: f(r m_1 + m_2) = r f(m_1) + f(m_2)$. Then we have $g(f(r m_1 + m_2)) = r m_1 + m_2 = g(r f(m_1) + f(m_2))$. Because $f$ is bijective, $f(m_1)$ and $f(m_2)$ points to a unique element in $M$ denoted as $m_3$ and $m_4$, and $forall m_3, m_4 in M: exists m_1, m_2 in M : f(m_1) = m_3 and f(m_2) = m_4$. Therefore, $forall m_3, m_4 in M: g(r m_3 + m_4) = r g(m_3) + g(m_4) = r m_1 + m_2$.
+  Because $f$ is a R-module homomorphism 
+  
+  $ forall m_1, m_2 in M, r in R: f(r m_1 + m_2) = r f(m_1) + f(m_2) $
+  
+  Then we have $g(f(r m_1 + m_2)) = r m_1 + m_2 = g(r f(m_1) + f(m_2))$. 
+
+  Because $f$ is bijective, $f(m_1)$ and $f(m_2)$ points to a unique element in $M$ denoted as $m_3$ and $m_4$
+
+  $ forall m_3, m_4 in M: exists m_1, m_2 in M : f(m_1) = m_3 and f(m_2) = m_4 $ 
+
+  Therefore, $forall m_3, m_4 in M: g(r m_3 + m_4) = r g(m_3) + g(m_4) = r m_1 + m_2$.
 
   Assume the existence of such $g$ that is a R-module homomorphism and $g compose f = id = f compose g$:
 
@@ -158,7 +174,9 @@
 ==
 
 #proof[
-  
+  Consider a matrix $mat(1,0;0,-1)$ that has no eigenvector in $RR^2$. Then we have no submodule for this module.
+
+  $"End"_R (M)$ is all the linear transformation that commute with $x$, and for this case it is $mat(a,b;b,-a)$, and thus we can just send this to $a+b i$.
 ]
 
 =
@@ -213,15 +231,29 @@ Exhibit all $ZZ$-module homomorphisms from $ZZ\/30ZZ$ to $ZZ\/21ZZ$.
 Given a ring $R$, the opposite ring $R^"op"$ is the ring with all the same elements, where addition is defined identically, but for which $x dot^"op" y := y dot x$ where $dot$ is multiplciation in $R$ and $dot^"op"$ is the multiplication in $R^"op"$. Take $R$ as a left $R$-module and show that $"Hom"_(R-"Mod")(R,R)$ is isomorphic to $R^"op"$ as a ring.
 
 #proof[
+  #let hom = $"Hom"_(R-"Mod")(R,R)$
+  
+  #let op = "op"
 
+  Consider an element $f$ in $hom$, it must follows the module property.
+
+  That is
+
+  $ forall r_1, r_2 in R: r_1 f(r_2) = f(r_1 r_2) => r_1 f(1) = r_1 $
+
+  Therefore, $f$ can only have one form $f_r (r') = r' r$.
+
+  Then the map $psi: R -> hom$ by sending $r arrow.bar f_r$ is an isomorphism.
 ]
 
 #[
   #let op = [op]
+  #let Mat = "Mat"
 
-  Show that if $R = "Mat"_(n times n) (k)$ is the ring of $n times n$ matrices with entries in a field $k$, then $R^"op" cong "Mat"_(n times n) (k^op)$, where $k^op$ is the opposite field of $k$, then $R = "Mat"_(n times n) (k)$ is the ring of $n times n$ matrics with entries in a field $k$, then $R^"op" cong R$ where the isomophism is given by sending a matrix to its transpose.
+
+  Show that if $R = Mat_(n times n) (k)$ is the ring of $n times n$ matrices with entries in a field $k$, then $R^op cong R$ where the isomorphism is given by sending a matrix to its transpose.
 ]
 
 #proof[
-  
+  By property of transpose, we have $A B = B A^T$, and thus this is an isomorphism.
 ]

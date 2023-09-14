@@ -5,21 +5,28 @@
   // Set the document's basic properties.
   set document(author: authors, title: title)
   set page(numbering: "1", number-align: center)
-  set text(font: "Linux Libertine", lang: "en", weight: 300)
+  set text(
+    font: "Linux Libertine",
+    lang: "en",
+    weight: 300,
+  )
+  set par(justify: false)
 
   set heading(numbering: "1.1")
-  
+
   // Set paragraph spacing.
   show par: set block(above: 1.2em, below: 1.2em)
-  
+
   set block(below: 1.5em, above: 1.5em)
 
   set par(leading: 1em)
 
   // Title row.
-  align(center)[
-    #block(text(weight: 700, 1.75em, title))
-  ]
+  align(
+    center,
+  )[
+      #block(text(weight: 700, 1.75em, title))
+    ]
 
   // Author information.
   pad(
@@ -40,10 +47,10 @@
 }
 
 
-#let cong=$tilde.equiv$
+#let cong = $tilde.equiv$
 #let id = $#math.bb("1")$
 
-#let nsg=symbol("⊴")
+#let nsg = symbol("⊴")
 #let subgroup = nsg;
 
 #let iprod(inner)=$lr(angle.l #inner angle.r)$
@@ -51,33 +58,34 @@
 
 #let id = math.bb("1");
 
-#let pp=math.cal("p");
+#let pp = math.cal("p");
 
-#let sim=sym.tilde.op
+#let sim = sym.tilde.op
 
-#let qtext(body) = text(body, font: "Linux Biolinum")
+#import "@preview/lemmify:0.1.2": *
 
-#let question(..bodies) = {
-  for (i, value) in bodies.pos().enumerate() {
-    if i == 0 [
-      = #value
-    ]
-    if i == 1 [
-      === Questions
 
-      #qtext[
-        #value
-      ]
-    ]
+#let (
+  theorem,
+  lemma,
+  corollary,
+  remark,
+  proposition,
+  example,
+  proof,
+  rules: thm-rules,
+) = default-theorems(
+  "thm-group",
+  lang: "en",
+  proof-styling: (arg, name, number, body) => box(
+    inset: 1em,
+    fill: blue.lighten(80%),
+    radius: 1em,
+  )[
+      *_Proof_*:
 
-    if i == 2 [
-      === Solutions
+      #body
 
-      #value
-
-      #align(right)[
-         $square$
-      ]
-    ]
-  }
-}
+      #h(1fr) #math.square
+    ],
+)
