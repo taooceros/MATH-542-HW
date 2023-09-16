@@ -109,12 +109,24 @@
 
 ]
 
+==
+
+===
+
+Because $ZZ$ is an integral domain, then become a torsion submodules means exist some elements that makes the whole submodule become $0$. Then the first entries must be $0$.
+
+The second entry is just the whole $ZZ\/6ZZ$ as we always have $6 in ZZ$ that makes every element in $ZZ\/6ZZ$ to be 0.
+
 =
+
+Denote the finite-dimensional $k[x]$-module as $V$.
+
+To become a submodule $V'$, it must be invariant under the linear transformation represented by $x$. It suffices to find a polynomial $chi(A)$ such that $chi(A) = 0$. By Cayley-Hamilton theorem, this polynomials always exists, which is the charateristic polynomial. Thus every element is a torsion element, and thus the torsion submodules are $V$ itself.
 
 ==
 
 #proposition[
-  The only finite-dimensional $CC[x]$-modules are one-dimensional.
+  The only finite-dimensional simple $CC[x]$-modules are one-dimensional.
 ]
 
 #proof[
@@ -132,9 +144,9 @@
 #proof[
   By (1), we will have the submodules span by the eigenvectors of $mat(1,1;0,1)$.
 
-  It suffices to show that any other vector span has dimension 2 (0 is trivial).
-
-  Consider a module $mat(x;y) in.not "span"("Eigen"mat(1,1;0,1))$, then $mat(1,1;0,1) mat(x;y) != c mat(x;y)$, which implies $mat(1,1;0,1)$ is linearly independent with $mat(x;y)$, which means it cannot become a submodule by itself or its linear variant. 
+  $
+    mat(1,1;0,1)mat(x;y) = lambda mat(x;y) => mat(x+y =x;y = y) => mat()
+  $
 ]
 
 =
@@ -202,8 +214,8 @@ Let $A$ be any $ZZ$-module, let $a$ be any element of $A$ and let $n$ be a posit
 #proof[
   From Previous statement, we have each $phi_a : ZZ\/n ZZ -> A$ correspoinded to a set of $a$ such that $n a = 0$.
 
-  #let hom = $"Hom"_(ZZ) (ZZ\/n ZZ, A)$
-  #let znz = $ZZ\/n ZZ$
+  #let hom = [$"Hom"_(ZZ) (ZZ\/n ZZ, A)$]
+  #let znz = [$ZZ\/n ZZ$]
 
   We want to prove $forall psi in hom : exists a in A : psi = phi_a $
 
@@ -239,11 +251,13 @@ Given a ring $R$, the opposite ring $R^"op"$ is the ring with all the same eleme
 
   That is
 
-  $ forall r_1, r_2 in R: r_1 f(r_2) = f(r_1 r_2) => r_1 f(1) = r_1 $
+  $ forall r_1, r_2 in R: r_1 f(r_2) = f(r_1 r_2) => f(r_1) = f(r_1 dot 1) = r_1 f(1) $
 
   Therefore, $f$ can only have one form $f_r (r') = r' r$.
 
-  Then the map $psi: R -> hom$ by sending $r arrow.bar f_r$ is an isomorphism.
+  Then the map $psi: R -> hom$ by sending $r arrow.bar f_r$. This map is clearly both injective and surjective.
+
+  Consider the map $phi: hom -> R^op$ that maps $f_r$ to $r$ in $R^op$. Because it is the inverse of $psi$ in the underlying set, it is injective and surjective, and thus a isomorphism.
 ]
 
 #[
