@@ -269,5 +269,11 @@ Given a ring $R$, the opposite ring $R^"op"$ is the ring with all the same eleme
 ]
 
 #proof[
-  By property of transpose, we have $A B = B A^T$, and thus this is an isomorphism.
+  This map is a clearly bijection on the underlying set. The only thing left to check it is a homomorphism.
+
+  $
+    f(A+B) = (A+B)^T = A^T + B^T\
+    f(A B) = (B A)^T = A^T B^T = f(A)f(B)
+
+  $
 ]
