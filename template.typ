@@ -82,9 +82,7 @@
     fill: blue.lighten(80%),
     radius: 1em,
   )[
-      *_Proof_*:
-
-      #body
+      *_Proof:_* #h(0.5em) #body
 
       #h(1fr) #math.square
     ],
