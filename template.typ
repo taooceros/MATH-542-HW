@@ -62,6 +62,8 @@
 
 #let sim = sym.tilde.op
 
+#let cplus = sym.plus.circle
+
 #import "@preview/lemmify:0.1.2": *
 
 
@@ -87,3 +89,4 @@
       #h(1fr) #math.square
     ],
 )
+
