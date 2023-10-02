@@ -186,7 +186,7 @@ Show that there are four non-isomorphic one-dimensional $RR[Q_8]$-modules. (Note
         {a + b i + c j + d k | a,b,c,d in RR}
     $
 
-    For one dimensional module, we are essentially consider the homomorphism between $Q_8 -> CC^times$, but $CC^times$ is commutative, which means it suffices to consider $Q_8 div [Q_8, Q_8] -> CC^times$, which is essentially $ZZ div 2 times ZZ div 2 -> CC^times$, which is $"Hom"(ZZ div 2, CC^times)^2$, which has size 4.
+    For one dimensional module, we are essentially consider the homomorphism between $Q_8 -> RR^times$, but $RR^times$ is commutative, which means it suffices to consider $Q_8 div [Q_8, Q_8] -> RR^times$, which is essentially $ZZ div 2 times ZZ div 2 -> RR^times$, which is $"Hom"(ZZ div 2, RR^times)^2$, which has size 4.
 
 ]
 
