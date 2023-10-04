@@ -281,3 +281,12 @@ Show that there is some countable subset $cal(B)_1$ of $cal(B)$ such that $N$ is
 
   Thus $forall k in ZZ, exists m in M: overline(s) = k overline(m)$.
 ]
+
+
+= Bonus
+
+#proof[
+  To prove that $M$ is free, it suffices to show that the map to $M$ is injective. If $r x = 0$, then $r$ must map everything in the $x$ axis to $0$. Same for $r y = 0$. Then $(r x, r y) = 0$ implies that it is a trivial map from $CC^2 - {0,0} -> CC$. Thus $M$ is free.
+
+  If $exists (u,v) in R^2$ that is linearly independent with $(x,y)$, then
+]
