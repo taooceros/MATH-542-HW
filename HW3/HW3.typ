@@ -122,7 +122,7 @@ Show that $p tensor id : A tensor B -> Q tensor B$ is still surjective and that 
 
 ==
 
-Now consider a short exact sequence of abelian groups $0 -> ZZ -> ZZ -> ZZ div n -> 0$ and let $B = ZZ div m$ where $n$ and $m$ are positive integers. Show that $iota tensor id$ is injective if and only if $m | n$.
+Now consider a short exact sequence of abelian groups $0 -> ZZ -> ZZ -> ZZ div n -> 0$ and let $B = ZZ div m$ where $n$ and $m$ are positive integers. Show that $iota tensor id$ is injective if and only if $gcd(m,n)=1$.
 
 #proof[
     Consider the following graph:
@@ -133,6 +133,7 @@ Now consider a short exact sequence of abelian groups $0 -> ZZ -> ZZ -> ZZ div n
         node((0, 2), [$ZZ tensor ZZ div m$]),
         node((1, 1), [$ZZ div n plus.circle ZZ div m$]),
         node((1, 2), [$ZZ div n tensor ZZ div m$]),
+        arr((0,0), (0,2), $iota tensor id$, curve: 20deg, "dashed"),
         arr((0, 0), (0, 1), [$iota cplus id$], "inj"),
         arr((0, 1), (0, 2), [$f$]),
         arr((1, 1), (1, 2), [$tilde(f)$], label-pos: -1em),
@@ -140,11 +141,13 @@ Now consider a short exact sequence of abelian groups $0 -> ZZ -> ZZ -> ZZ div n
         arr((0, 2), (1, 2), [$p tensor id$], label-pos: -1.5em, "dashed"),
     )]
 
-    If $iota cplus id$ is injective, then the kernel of $p tensor id$ are ${0}$. Thus, the kernel of $p tensor id$ is also ${0}$.  
+    If $iota cplus id$ is injective, then the kernel of $p cplus id$ are the whole $ZZ cplus ZZ div m$. Thus, the kernel of $p tensor id$ is also $ZZ tensor ZZ div m$.  
 
-    If $m | n$, then $a tensor b in ZZ div m <=> a mod m tensor b$, which means $p tensor id$ will be injective.
+    We have $A tensor_ZZ ZZ div n cong A div n A => ZZ div n tensor ZZ div m = ZZ div (n (m ZZ))$.
 
-    If $p tensor id$ is injective, then $a tensor b <=> a mod n tensor b$, which implies that $m | n$.
+    If $gcd(m,n) = 1$, $ZZ div (n m ZZ) cong ZZ div m ZZ cong ZZ tensor ZZ div m$, thus $iota tensor id$ automatically injective.
+
+    On
 
 ]
 
