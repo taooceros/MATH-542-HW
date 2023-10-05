@@ -130,12 +130,13 @@ Now consider a short exact sequence of abelian groups $0 -> ZZ -> ZZ -> ZZ div n
     #align(center)[#commutative-diagram(
         node((0, 0), $ZZ cplus ZZ div m$),
         node((0, 1), [$ZZ plus.circle ZZ div m$]),
-        node((0, 2), [$ZZ tensor ZZ div m$]),
+        node((0, 2), [$ZZ tensor ZZ div m cong ZZ div m$]),
+        node((0, 3), $ZZ tensor ZZ div m$),
         node((1, 1), [$ZZ div n plus.circle ZZ div m$]),
         node((1, 2), [$ZZ div n tensor ZZ div m$]),
-        arr((0,0), (0,2), $iota tensor id$, curve: 20deg, "dashed"),
         arr((0, 0), (0, 1), [$iota cplus id$], "inj"),
         arr((0, 1), (0, 2), [$f$]),
+        arr((0, 3), (0, 2), [$iota tensor id$]),
         arr((1, 1), (1, 2), [$tilde(f)$], label-pos: -1em),
         arr((0, 1), (1, 1), [$p cplus id$], label-pos: -2em),
         arr((0, 2), (1, 2), [$p tensor id$], label-pos: -1.5em, "dashed"),
@@ -145,9 +146,9 @@ Now consider a short exact sequence of abelian groups $0 -> ZZ -> ZZ -> ZZ div n
 
     We have $A tensor_ZZ ZZ div n cong A div n A => ZZ div n tensor ZZ div m = ZZ div (n (m ZZ))$.
 
-    If $gcd(m,n) = 1$, $ZZ div (n m ZZ) cong ZZ div m ZZ cong ZZ tensor ZZ div m$, thus $iota tensor id$ automatically injective.
+    If $gcd(m,n) = 1$, $ZZ div (n m ZZ) cong ZZ div m ZZ cong ZZ tensor ZZ div m$, thus $ZZ div m tensor ZZ div n$ is the trivial group, and thus kernel of $p tensor id$ is the whole $ZZ div m$, whcih means $iota tensor id$ is injective.
 
-    On
+    On the other hand, $iota tensor id$ is injective menas that $ZZ div n tensor ZZ div m$ is the trivial group, and thus implies that $gcd(m,n) = 1$.
 
 ]
 
