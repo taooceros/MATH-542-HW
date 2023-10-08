@@ -144,6 +144,18 @@ Let $S = R-{0}$ and consider the map $M -> (S^(-1)R ) tensor M$ that sends $m$ t
     
 ]
 
+==
+
+Show that any linearly independent subset of $R^n$ can be extended to a linearly independent subset of size n. (The bonus
+problem shows that this result is not true when $R$ is not an
+integral domain).
+
+#proof[
+  Because $R$ is an integral domain, and thus no zero divisor exists, and every submodules are torsion free, and thus every submodules are free.
+
+  Thus we can extend the linearly independent subset to a basis, which has size $n$.
+]
+
 = Tensor
 
 == 10.4.2
