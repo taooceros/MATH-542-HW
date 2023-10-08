@@ -147,7 +147,7 @@ Now consider a short exact sequence of abelian groups $0 -> ZZ -> ZZ -> ZZ div n
 
     If $gcd(m,n) = 1$, $ZZ div (n m ZZ) cong ZZ div m ZZ cong ZZ tensor ZZ div m$, thus $iota tensor id$ automatically injective.
 
-    On
+    On the other hand, if $iota tensor id$ is injective, the kernel of $p tensor id$ is the whole $ZZ tensor ZZ div m$, and thus 
 
 ]
 
