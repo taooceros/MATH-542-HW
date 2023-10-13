@@ -64,29 +64,58 @@
 
 #let cplus = sym.plus.circle
 
-#import "@preview/lemmify:0.1.2": *
+#import "@preview/ctheorems:1.0.0": *
 
+#let thm = thmbox("theorem", smallcaps[Theorem], base_level: 2, fill: fuchsia.lighten(90%), stroke: fuchsia.darken(20%))
 
-#let (
-  theorem,
-  lemma,
-  corollary,
-  remark,
-  proposition,
-  example,
-  proof,
-  rules: thm-rules,
-) = default-theorems(
-  "thm-group",
-  lang: "en",
-  proof-styling: (arg, name, number, body) => box(
-    inset: 1em,
-    fill: blue.lighten(80%),
-    radius: 1em,
-  )[
-      *_Proof:_* #h(0.5em) #body
+#let proposition = thmbox("theorem", "Proposition", fill: rgb("#FDFCDC"), stroke: rgb("#FDFCDC").darken(20%))
+#let lemma = thmbox("theorem", "Lemma", fill: rgb("#eeffee").lighten(50%), stroke: rgb("#eeffee").darken(10%))
 
-      #h(1fr) #math.square
-    ],
+#let corollary = thmplain(
+  "corollary",
+  "Corollary",
+  base: "theorem",
+  titlefmt: strong
 )
 
+#let definition = thmbox("definition", "Definition", inset: (x: 1.2em, top: 1em, bottom: 1em), base_level: 2, fill : aqua.lighten(70%), stroke: aqua.darken(20%))
+
+#let assumption = thmbox("assumption", "Assumption", fill: rgb("FFA1F5").lighten(50%), stroke: rgb("FFA1F5").darken(20%))
+
+#let example = thmplain("example", "Example").with(numbering: none)
+
+#let solution = thmbox("solution", "Solution", stroke: green.lighten(50%))
+#let exproof = thmenv(
+  "proof",
+  "Proof",
+  none,
+  none,
+  (name, number, body, color: black) => box(inset: 1em)[
+    #let name = if name != none { smallcaps[ (#name)] } else {}
+
+    #smallcaps[*Proof #number* #name:] #body
+    #h(1fr) $square$
+  ]
+)
+
+#let proof = thmplain(
+  "proof",
+  "Proof",
+  base: "theorem",
+  bodyfmt: body => [#body #h(1fr) $square$]
+).with(numbering: none)
+
+#let proofidea = thmplain(
+  "proof",
+  "Proof Idea",
+  base: "theorem",
+  bodyfmt: body => [#body #h(1fr) $square$]
+).with(numbering: none)
+
+#let remark = thmbox("remark", "Remark", base: "theorem", fill: orange.lighten(50%), stroke: orange.darken(20%)).with(
+    numbering: none
+  )
+
+#let todo = thmbox("todo", "TODO", base: "theorem", fill: yellow.lighten(50%)).with(
+    numbering: none
+  )
