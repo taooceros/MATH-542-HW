@@ -3,7 +3,7 @@
 // Take a look at the file `template.typ` in the file panel
 // to customize this template and discover how it works.
 #show: project.with(
-  title: "Math 542 HW2",
+  title: "Math 542 HW4",
   authors: ("Hongtao Zhang",),
 )
 
@@ -86,7 +86,18 @@ Let $d := dim V$. Show that every element of $Wedge^(d-1) V$ is simple.
 #proof[
     If $a$ is simple, then $a = e_i wedge e_j => e_i wedge e_j wedge e_i wedge e_j = 0$.
 
-    If $a wedge a = 0$
+    Assume $alpha wedge alpha = 0$, we will have $alpha = sum c_(i j) e_i wedge e_j$.
+
+    Then we have $alpha wedge alpha = sum c_(i j) c_(k l) e_i wedge e_j wedge e_k wedge e_l = 0$.
+
+    By the expansion in part 2, we have $c_(i j) c_(k l) - c_(i k) c_(j l) + c_(i l) c_(j k) = 0$.
+
+    Consider a simple vector $v_1 wedge v_2 = sum a_(i j) e_i wedge sum b_(i j) e_i = sum_(1 <= i < j <= d) (a_i b_j - b_i a_j) e_i wedge e_j$.
+
+    Matching $c_(i j)$ with $a_i b_j - b_i a_j$, we have $c_(i j) = a_i b_j - b_i a_j$.
+
+    Since $(a_i b_j - a_j b_i)(a_k b_l - a_l b_k) - (a_i b_k - b_i a_k) (a_j b_l - a_l b_j) + (a_i b_l - a_l b_i)(a_j b_k - a_k b_j) = 0$,
+    and $c_(i j) c_(k l) - c_(i k) c_(j l) + c_(i l) c_(j k) = 0$, we are able to find $v_1, v_2$ such that $alpha = v_1 wedge v_2$.
 ]
 
 ==
@@ -180,11 +191,23 @@ Let $d := dim V$. Show that every element of $Wedge^(d-1) V$ is simple.
 #solution[
     Note that the same argument in part (2) showing $HH$ is simple also applies here, because for all odd $k$, $i,j,k$ (the quaternion $k$) lies in the image of $phi.alt_k$.
 
-
+    Analogous to why the rotations send $RR[D_(2n)]$ by sending $r arrow.bar r^k$ is non-isomorphic, we have the same non-isomorphism here.
 ]
 
 ==
 
 #solution[
-    
+    Since we have the formula to classify simple modules
+
+    $
+        abs("Dic"_(4n)) = sum dim(HH_k)/dim("End"(HH_k))^2
+    $
+
+    and each $HH_k$ is 4 dimensional, we have
+
+    $
+        4n = sum 4/dim("End"(HH_k)) = sum 4/1 = 4n
+    $
+
+    which means we have found all the simple modules.
 ]
