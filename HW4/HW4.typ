@@ -1,4 +1,4 @@
-#import "../template.typ": *
+#import "@local/homework-template:0.1.0": *
 
 // Take a look at the file `template.typ` in the file panel
 // to customize this template and discover how it works.
@@ -186,5 +186,5 @@ Let $d := dim V$. Show that every element of $Wedge^(d-1) V$ is simple.
 ==
 
 #solution[
-    
+
 ]
