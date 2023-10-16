@@ -1,4 +1,4 @@
-#import "../template.typ": *
+#import "@local/homework-template:0.1.0": *
 
 // Take a look at the file `template.typ` in the file panel
 // to customize this template and discover how it works.
@@ -16,7 +16,7 @@
   example,
   proof
 ) = (
-  theorem,
+  thm,
   lemma,
   corollary,
   remark,
@@ -30,7 +30,7 @@
 #let qt(x,y) = $#x\/#y$
 #let div = $\/$
 
-#show: thm-rules
+#show: thmrules
 
 
 #import "@preview/commute:0.1.0": node, arr, commutative-diagram
@@ -47,7 +47,7 @@ Suppose $R$ is commutative and $N cong R^n$ is a free $R$-module of rank $n$ wit
 
 For any nonzero $R$-module $M$ show that every element of $M tensor N$ can be written uniquely in the form $sum_(i=1)^n m_i tensor e_i$ where $m_i in M$. Deduce that if $sum_(i=1)^n m_i tensor e_i = 0$ in $M tensor N$ then $m_i = 0$ for $i = 1, ..., n$.
 
-#proof[
+#solution[
     $N cong R^n => M tensor N cong M tensor R^n cong underbrace((M tensor R) plus.circle ... plus.circle (M tensor R), n "times")$
 
     Because the construction is a free module, so every entries are linearly independent, so summing them is equivalent to the cartisian product.
@@ -59,7 +59,7 @@ For any nonzero $R$-module $M$ show that every element of $M tensor N$ can be wr
 
 Show that if $sum m_i tensor n_i = 0$ in $M tensor N$ where $n_i$ are merely assumed to be $R$-linearly independent then it is not necessarily true that all the $m_i$ are $0$.
 
-#proof[
+#solution[
     Consider the $1 tensor 2$ in the proposed Hint.
 
     In $qt(ZZ, 2ZZ) tensor ZZ$, we have proved that $1 tensor 2 = 0$ in last homework, but this is a counterexample for the claim above as $1!=0 in qt(ZZ,2ZZ)$.
@@ -73,7 +73,7 @@ Suppose $R$ is commutative and let $I$ and $J$ be ideals of $R$, so $qt(R,I)$ an
 
 Prove that every element of $R/I tensor_R R/J$ can be written as simple tensor of the form $(1 mod I) tensor (r mod J)$.
 
-#proof[
+#solution[
     Assume we have $a tensor b + c tensor d in R/I tensor R/J$. By the property of tensor product, it must satisfy $a tensor b + c tensor d= a (1 tensor b) + c(1 tensor d) = (1 tensor a b) + (1 tensor c d) = 1 tensor (a b + c d)$. This is doable because $R/I$ and $R/J$ are subring of $R$.
 ]
 
@@ -81,7 +81,7 @@ Prove that every element of $R/I tensor_R R/J$ can be written as simple tensor o
 
 Prove that there is an $R$-module isomorphism $qt(R,I) tensor_R qt(R, J) cong qt(R, (I+J))$ mapping $(r mod I) tensor (r' mod J)$ to $r r' mod (I + J)$.
 
-#proof[
+#solution[
     To prove surjectivity, we already have every element of $R/I tensor R/J$ can be written as $(1 mod I) tensor (r mod J)$, and thus implies that $1 r' mod (I+J)$ is everything in $R div (I+J)$.
 
     To prove injectivity, we have the only element maps to $0$ to be the element when $r=0$ or $r' = 0$. However, each will mean they are $0$ in the tensor product.
@@ -98,7 +98,7 @@ is _short exact_ if $iota : N -> A$ is an injective $R$-module homomorphism whos
 ==
 Show that $p tensor id : A tensor B -> Q tensor B$ is still surjective and that the image of $iota tensor id$ is still its kernel.
 
-#proof[
+#solution[
     We know that both $p$ and $id$ are surjective. Then we can prove that $p tensor id$ is surjective by the property of tensor product.
 
 
@@ -124,7 +124,7 @@ Show that $p tensor id : A tensor B -> Q tensor B$ is still surjective and that 
 
 Now consider a short exact sequence of abelian groups $0 -> ZZ -> ZZ -> ZZ div n -> 0$ and let $B = ZZ div m$ where $n$ and $m$ are positive integers. Show that $iota tensor id$ is injective if and only if $gcd(m,n)=1$.
 
-#proof[
+#solution[
     Consider the following graph:
 
     #align(center)[#commutative-diagram(
@@ -157,7 +157,7 @@ Now consider a short exact sequence of abelian groups $0 -> ZZ -> ZZ -> ZZ div n
 
 Suppose that $A : V_1 -> V_2$ and $B : W_1 -> W_2$ are $k$-linear maps between $k$-linear vectors spaces. Let $"rank"(C)$ be the rank of a linear map $C$, i.e. the dimension of its image. Show that $"rank"(A tensor B) = "rank"(A) "rank"(B)$.
 
-#proof[
+#solution[
     This can be done by consider the basis of image of $A$ and image of $B$. Then the image of $A tensor B$ is the tensor product of the basis of the image of $A$ and $B$, which will contains $"rank"(A)"rank"(B)$ elements.
 ]
 
@@ -167,7 +167,7 @@ Suppose that $A : V_1 -> V_2$ and $B : W_1 -> W_2$ are $k$-linear maps between $
 
 For each positive integer $n$, find all simple $RR[ZZ div n ZZ]$-modules up to isomorphism and their endomorphism algebras. (Hint: Each simple module will be at most $2$-dimensional; think about rotations)
 
-#proof[
+#solution[
     We know that rotation matrix is simple under $RR[ZZ div n ZZ]$. Then for $ZZ div n ZZ$, we just consider the rotation matrix with angle $(2pi) / n$.
 
     Because we have the theorem $abs(ZZ div n ZZ) = sum dim(S_i)^2/"End"(S_i)$. Because we have $dim(S_i) = 2$ for all $i$, then the dimension of the endomorphism rings must be $4$.
@@ -183,7 +183,7 @@ Let $Q_8 subset HH$ be the group of order $8$ which is generated by $i,j$. Its e
 
 Show that there are four non-isomorphic one-dimensional $RR[Q_8]$-modules. (Note that $Q_8 div [Q_8, Q_8] cong ZZ div 2 times ZZ div 2$). 
 
-#proof[
+#solution[
     An one dimensional $RR[Q_8]$ module are in the following form:
 
     $
@@ -198,7 +198,7 @@ Show that there are four non-isomorphic one-dimensional $RR[Q_8]$-modules. (Note
 
 Show that $"End"_(RR[Q_8])(HH)$ is isomorphic to $HH$ as a ring.
 
-#proof[
+#solution[
     We can see that $RR[Q_8]$ is isomorphic to $HH$ as a ring, and thus $"End"_(RR[Q_8])(HH) cong HH$.
 ]
 
@@ -206,7 +206,7 @@ Show that $"End"_(RR[Q_8])(HH)$ is isomorphic to $HH$ as a ring.
 
 Use previous one to conclude, up to isomorphism, $HH$ is the unique simple $RR[Q_8]$-module that is not one-dimensional.
 
-#proof[
+#solution[
     Since we have 4 one dimensional simple module and one 4 dimensional simple module, then we have $abs(Q_8) = sum dim(S_i)^2/"End"(S_i) = 4 + 4 = 8$.
 
     Then we know $HH$ is the unique simple $RR[Q_8]$-module that is not one dimensional.
@@ -216,7 +216,7 @@ Use previous one to conclude, up to isomorphism, $HH$ is the unique simple $RR[Q
 
 Show that there is a unique simple $CC[Q_8]$-module that is not one-dimensional. (Hint: It is two-dimensional, but you don't have to construct it. You can deduce its existence from fact we have shown and the four one-dimensional $CC[Q_8]$-modules that you found in the previous part.)
 
-#proof[
+#solution[
     We know that $abs(Q_8) = 8$, and we have four one dimensional simple module, so the last one must be two dimensional by the formula.
 ]
 
@@ -228,7 +228,7 @@ Let $k$ be a field. Let $V$ be a finite-dimensional $k$-vector space. Suppose th
 
 A linear map $pi : V->V$ is called a _projection onto_ $W$ if its image is $W$ and if $pi(w) = w$ for all $w in W$. Show that, given such a map, $V$ is isomorphic (as a vector space) to $ker(pi) cplus W$.
 
-#proof[
+#solution[
     By rank-nullity theorem, we have $ker(pi) = abs(V) - abs(W)$. Then we can see that $V = ker(pi) cplus W$ as long as $ker(pi)$ and $W$ are disjoint except ${0}$. However this is clear given $pi(w) = w$.
 ]
 
@@ -236,7 +236,7 @@ A linear map $pi : V->V$ is called a _projection onto_ $W$ if its image is $W$ a
 
 A linear map $pi : V->V$ is called $G$-equivariant if $pi (g dot v) = g dot pi(v)$ for all $g in G$. Show that if $pi$ is $G$-equivariant then its kernel and image are $k[G]$-submodules of $V$.
 
-#proof[
+#solution[
     We know that $pi$ is $G$-equivariant, then $forall g in G: pi(g dot v) = g dot pi(v)$. Thus it means that $pi in "Hom"_(k[G])(V, V)$, which suggests that its kernel and image are $k[G]$-submodules of $V$.
 ]
 
@@ -244,7 +244,7 @@ A linear map $pi : V->V$ is called $G$-equivariant if $pi (g dot v) = g dot pi(v
 
 Suppose that $pi : V->V$ is a projection onto a submodule $W$. Suppose $abs(G)$ is invertible in $k$ (this could fail for instance if $G$ has even order and $k=ZZ div 2$ since 2 is not invertible in $k$ as it coincides with $0$). Define a new function $p : V->V$ by $p(v)=1/abs(G) sum_(g in G) g dot pi(g^(-1) dot v)$. Show that $p$ is a $G$-equaiariant projection onto $W$. Conclude that $V$ is isomorphic to $W cplus ker(pi)$ as a $k[G]$-module.
 
-#proof[
+#solution[
     $
         p(g' w) = 1/abs(G) sum_(g in G) g (g^(-1)g' w) = 1/abs(G) sum_(g in G) g' g'^(-1) g(g^(-1) g' w) = g' sum_(g'' in G) g'' pi(g''^(-1) w) = g' pi(w)
     $
@@ -256,6 +256,6 @@ Suppose that $pi : V->V$ is a projection onto a submodule $W$. Suppose $abs(G)$ 
 
 Conclude that $V$ is a direct sum of simple $k[G]$-modules.
 
-#proof[
+#solution[
     We can make $W$ a simple $k[G]$-module, and $W$ is a direct sum of a simple module and its kernel. Then we do the same thing to the kernel. Then we can conclude that $V$ is a direct sum of simple $k[G]$-modules.
 ]
