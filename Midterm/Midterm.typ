@@ -9,6 +9,8 @@ Let $A = ZZ div 3 cplus ZZ div 12$. Find the number of elements in $A tensor_ZZ 
 
 #let zmod(x) = $ZZ div #x$
 
+#let solution = solution.with(base_level: 0)
+
 #solution[
   $
     A tensor_ZZ A 
@@ -77,6 +79,99 @@ Let $G$ be a finite subgroup of $GL(n, CC)$. Let $D$ be the subgroup of diagonal
 matrices in $GL(n, CC)$. Show that if $G$ is abelian then it is conjugate to a
 subgroup of $D$.
 
+#let diag(..args) = {
+  let args = args.pos();
+
+  let length = args.len();
+  
+  let result = ();
+
+  for (i, e) in args.enumerate() {
+    let row = ();
+    for j in range(i) {
+      row.push(0)
+    }
+
+    row.push(e)
+
+    for j in range(length - i - 1) {
+      row.push(0)
+    }
+
+    result.push(row);
+  }
+
+  
+  math.mat(..result)
+}
+
 #solution[
-  We know that $C^n$ is a $C[G]$-module. Further we know that $CC^n$ can be written as sum of one dimensional simple $C[G]$-modules, and since every single element of $G$ is acting on $C^n$ via a matrix, and thus acting on the sum of simple modules via a matrix. Since we know that every
+  We know that $C^n$ is a $C[G]$-module. Further we know that $CC^n$ can be written as sum of one dimensional simple $C[G]$-modules, denoted as $V_i$.
+
+  Then we further know that each $V_i$ will be determined by the action of $G$, i.e. $delta_i : G -> CC^times$, and thus there must exist some $B$ such that $forall A in G : B A B^(-1) = diag(delta_1(g), dots.down, delta_n(g)) in D$
+]
+
+= Problem 5
+
+Suppose that $(a,b)$ and $(c, d)$ are two elements of $ZZ^2$ and let $G$ be the subgroup of $ZZ^2$ that they generate. Suppose that $a d - b c = 12$. Find the number, up to isomorphism, of all possible quotient groups $ZZ^2 div G$.
+
+#solution[
+  It suffices to consider all matrix of the form $A = mat(a, b; c, d)$ where $a d - b c = 12$ and $a,b,c,d in ZZ$. Note that $a d - b c = det(A)$, and $det(A) = d_1 times d_2$, where $d_1$ and $d_2$ are the invariant factors of $A$.
+
+  Thus it suffices to consider all the possible invariant factor of $A$.
+
+  Since $12 = 3 times 4$, and thus the only invariant factor combination is $(1,12)$ and $(2,6)$, which means the number of quotient group is only $2$ up to isomorphism.
+]
+
+= Problem 6
+
+Let $A = ZZ cplus zmod(6) cplus zmod(3)$. Consider the homomorphsm $phi : A -> QQ tensor_ZZ A$ given by $phi(a) = 1 tensor a$. Find the number of elements in $ker(phi)$.
+
+#solution[
+  We know that $QQ tensor_ZZ A = QQ tensor (ZZ cplus zmod(6) cplus zmod(3)) = QQ tensor ZZ cplus QQ tensor zmod(6) cplus QQ tensor zmod(3)$.
+
+  Since this is a direct sum of three tensor product, it will be $0$ if and only if all three entries are $0$.
+
+  Firstly consider how many elements in $zmod(6)$ that will be $0$ when sending $a arrow.bar 1_QQ tensor a$. Since $6$ divides $1$ in $QQ$, we know that all elements in $zmod(6)$ will be $0$ when sending $a arrow.bar 1_QQ tensor a$.
+
+  Similar reasoning yield us that all elements in $zmod(3)$ will be $0$ when sending $a arrow.bar 1_QQ tensor a$.
+
+  Finally, we know that $QQ tensor_ZZ ZZ$ is isomorphic to $QQ$ with isomorphism $f : (q tensor z) arrow.bar q dot z$, and thus $QQ tensor ZZ$ will be $0$ if and only if $z$ is $0$, which means we have only $0$ maps to $0$ in $phi$. Therefore the number of elements in $ker(phi)$ is $1 times 3 times 6 = 18$.
+]
+
+= Problem 7
+
+Suppose that $A$ is $4 times 4$ matrix with rational entries and whose characteristic polynomial is $x^2(x^2+1)$. Produce a finite collection $S$ of explicit matrices and show that, for some $B$ in $GL(4, QQ)$, $B A B^(-1)$ belongs to $S$.
+
+#solution[
+  It suffices to find the all possible Rational Canonical Form with characteristic polynomial $x^2 (x^2 + 1)$.
+
+  The prime decomposition of $x^2 (x^2 + 1)$ is
+
+  $
+    x, x, (x^2 + 1)
+  $
+
+  We know that the product of invariant factors are the characteristic polynomial. Thus the possible invariant factors are
+
+  $
+    x^2(x^2 + 1) = x^4 + x^2 \
+    x, x(x^2 + 1) = x^3 + x \
+  $
+
+  Using the algorithm in the book, we can find the possible Rational Canonical Form are
+
+  $
+    mat(0, 0, 0, 0;
+        1, 0 ,0, 0;
+        0, 1, 0, -1;
+        0, 0, 1, 0) \
+
+    mat(1, 0, 0, 0;
+        0, 0, 0, 0;
+        0, 1, 0, -1;
+        0, 0, 1, 0;) \
+  $
+
+  Since these are the only two possible Rational Canonical Form with charateristic polynomial $x^2 (x^2 + 1)$, we know that $A$ must be conjugate to one of them.
 ]
