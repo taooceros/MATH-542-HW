@@ -167,7 +167,7 @@ Suppose that $A$ is $4 times 4$ matrix with rational entries and whose character
         0, 1, 0, -1;
         0, 0, 1, 0) \
 
-    mat(1, 0, 0, 0;
+    mat(0, 0, 0, 0;
         0, 0, 0, 0;
         0, 1, 0, -1;
         0, 0, 1, 0;) \
