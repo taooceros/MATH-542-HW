@@ -67,9 +67,7 @@ subgroup of $zmod(12)^5$ whose smallest generating set has size $7$.
   preimage must have a generating set of size larger or equal to $7$.
   
   Note that a subgroup in $ZZ^5$ is a $ZZ$-submodule, and since $ZZ$ is a PID, all
-  of its submodule must have smaller rank than $ZZ^5$. Thus, the preimage must
-  have rank at most $5$. However, the rank is equal to the smallest generating set
-  of the module, and thus we have a contradiction.
+  of its submodule is free and must have smaller rank than $ZZ^5$. Thus, the preimage must have rank at most $5$. The rank is equal to the smallest generating set of the module, and thus we have a contradiction.
 ]
 
 = Problem 4
