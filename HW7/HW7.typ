@@ -107,6 +107,16 @@ Determine the splitting field and its degree over $QQ$ for $x^6 - 4$.
 
 Let $K$ be a finite extension of $F$. Prove that $K$ is a splitting field over $F$ if and only if every irreducible polynomial in $F[x]$ that has a root in $K$ splits completely in $K[x]$.
 
+#let div = $\/$
+
 #solution[
+    Denote the polynomial as $p in F[x]$.
+
+    We know that $k$ is a splitting field of $p$, and thus $k cong F[x] div p$.
+
+    Assume there are two roots $alpha, beta$ in $k$ such that $alpha in k$ and $beta in.not k$.
     
+    We know that $F[alpha] cong F[x] div p cong F[beta]$. Thus we have an isomorphism $phi : F[alpha] cong F[beta]$. Consider the splitting field of $p$ denoted as $k$, thus we have an injective map from $F[alpha] arrow.hook k$, and $F[beta] arrow.hook k$.
+
+    Then we consider the algebratic closure of $F$ noted as $overline(F)$. Automatically we have an isomorphism that extends $phi$ to $overline(F)$. Restricting $phi$ to $k$, we have a homomorphism $overline(phi) : k -> k$ that sends $alpha arrow.bar beta$, which means $beta in k$. This is a contradiction.
 ]
