@@ -119,4 +119,6 @@ Let $K$ be a finite extension of $F$. Prove that $K$ is a splitting field over $
     We know that $F[alpha] cong F[x] div p cong F[beta]$. Thus we have an isomorphism $phi : F[alpha] cong F[beta]$. Consider the splitting field of $p$ denoted as $k$, thus we have an injective map from $F[alpha] arrow.hook k$, and $F[beta] arrow.hook k$.
 
     Then we consider the algebratic closure of $F$ noted as $overline(F)$. Automatically we have an isomorphism that extends $phi$ to $overline(F)$. Restricting $phi$ to $k$, we have a homomorphism $overline(phi) : k -> k$ that sends $alpha arrow.bar beta$, which means $beta in k$. This is a contradiction.
+
+    The other direction follows as definition of splitting field.
 ]
