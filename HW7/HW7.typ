@@ -44,18 +44,69 @@ Suppose $alpha$ is a rational root of a monic polynomial in $ZZ[x]$.
 Prove that $alpha$ is an integer.
 
 #solution[
-    Since $alpha$ is a rational root of a monic polynomial in $ZZ[x]$,
-    the polynomial $f(x)$ can be written as $(x-alpha)g(x)$ in $QQ[x]$.
-    Write $g(x) = a_1 x^n + ... + a_(n+1)$. Then we can see that $a_1 = 1$ and $a_2 + alpha a_1, a_3 + alpha a_2 ..., a_(n+1) + alpha a_(n), alpha a_(n+1)$ are
-    integers. Thus $a_(n+1)$ can be written as $beta/alpha$.
-    
-    Further, $alpha a_n + a_(n+1) = alpha a_n + beta/alpha = (alpha^2 a_n + beta)/alpha$ is an integer. So $alpha^2 a_n + beta$ is a multiple of $alpha$.
+    Suppose $alpha = n/d$ where $abs(d) > 1$. The polynomial can be written as
+
+    $
+        a_n x^n + a_(n-1) x^(n-1) + ... + a_1 x + a_0
+    $
+
+    Thus
+
+    $
+        (n/d)^n + a_(n-1) (n/d)^(n-1) + ... + a_1 (n/d) + a_0 = 0 \        
+    $
+
+    $
+        -(n/d)^n &= a_(n-1) (n/d)^(n-1) + ... + a_1 (n/d) + a_0 \
+        &= b/d^(n-1)
+    $ for some $b in ZZ$. Since $abs(d) > 1$, we have reached a contradiction.
 ]
 
 = 13.4
 
 == 3
 
+Splitting field over $QQ$ for $x^4 + x^2 + 1$.
+
+#solution[
+    $
+        x^4 + x^2 + 1 = (x^2-x+1)(x^2+x+1)
+    $
+
+    Thus we can find that it has 4 roots
+
+    $
+        (-1 - i sqrt(3))/2, (1 + i sqrt(3))/2, (1-i sqrt(3))/2, (-1 + i sqrt(3))/2
+    $
+
+    Thus we have the splitting field
+
+    $
+        QQ(sqrt(3))
+    $
+]
+
 == 4
 
+Determine the splitting field and its degree over $QQ$ for $x^6 - 4$.
+
+#solution[
+    Note that $x^6-4 = 0 => x^6 = 4 => x^6 = (root(6,4)) dot 1 = root(3,2) dot 1$.
+
+    Thus the splitting field need to contain all the root of the polynomial, which is
+
+    $
+        QQ(root(3,2), root(3,2) zeta(6), root(3,2) zeta(6), root(3,2) zeta(6), root(3,2) zeta(6), root(3,2) zeta(6))
+    $
+
+    The degree is 6.
+]
+
+
 == 5
+
+Let $K$ be a finite extension of $F$. Prove that $K$ is a splitting field over $F$ if and only if every irreducible polynomial in $F[x]$ that has a root in $K$ splits completely in $K[x]$.
+
+#solution[
+    
+]
