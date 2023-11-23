@@ -62,7 +62,19 @@ Conclude using (@q8b) that, in $FF_p [x]$, $Phi_l (x)$ is the product of $(l-1)/
 In particular, prove that, viewed in $FF_p [x]$, $Phi_7(x) = x^6 + x^5 + ... + x + 1$ is $(x-1)^6$ for $p=7$, a product of distint linear factor for $p equiv 1 mod 7$, a product of $3$ irreducible quadratics for $p equiv 6 mod 7$, a product of 2 irreducible cubics for $p equiv 2,4 mod 7$, and is irreducible for $p equiv 3,5 mod 7$.
 
 #solution[
-    
+    By previous part, we have $FF_p (zeta) = FF_p (zeta^a)$ for any integer $a$ not divisible by $l$.
+
+    Therefore we naturlly have the conjugacy classes of $zeta^k$ by the modulo subgroup of $l$.
+
+    For $p=7$, $Phi_l$ is $(x-1)^6$ because $1$ is the only element having degree $7$.
+
+    For $p equiv 1 mod 7$, $Phi_l$ is a product of distinct linear factors based on last part since $f=1$.
+
+    For $p equiv 6 mod 7$, $Phi_l$ is a product of $3$ irreducible quadratics based on last part since $f=2$.
+
+    For $p equiv 2,4 mod 7$, $Phi_l$ is a product of $2$ irreducible cubics based on last part since $f=3$.
+
+    For $p equiv 3,5 mod 7$, $Phi_l$ is irreducible based on last part since $f=6$.
 ]
 
 =
@@ -72,12 +84,73 @@ In particular, prove that, viewed in $FF_p [x]$, $Phi_7(x) = x^6 + x^5 + ... + x
 Let $phi$ denote the Frobenius map $x arrow.bar x^p$ on the finite field $FF_p^n$ as in the previous exercise. Determine the rational canonical form over $FF_p$ for $phi$ considered as an $FF_p$-linear transformation of the $n$-dimensional $FF_p$-vector space $FF_p^n$.
 
 #solution[
+    To derive the rational canonical form over $FF_p$ it suffices to find the minimal polynomial of $phi$.
+
+    #lemma[
+        The minimal polynomial of $phi$ is $x^p^n - 1$.
+    ]
+
+    #proof[
+        Suppose we have lower degree polynomial $P$ such that $P(phi) = 0$. We can write this polynomial as $sum a sigma_p^k$, and we know that it is $0$.
+        Then
+        $
+            (sum a sigma_p^k) (x) = sum a sigma_p^k (x) = sum a x^(p^k) = 0
+        $
+
+        Thus all $x$ is a root of $P$, which is a contradiction because the degree of this polynomial is less than $p^n$.
+    ]
+
+    Thus the rational canonical form is 
     
+    $
+        mat(
+            0 , 0 , ... , 0 , 1 ;
+            1 , 0 , ... , 0 , 0 ;
+            0 , 1 , ... , 0 , 0 ;
+            ... , ... , ... , ... , ... ;
+            0 , 0 , ... , 1 , 0;
+        )
+    $
 ]
+
+
 
 ==
 
 Let $phi$ denote the Frobenius map $x arrow.bar x^p$ on the finite field $FF_p^n$ as in the previous exercise. Determine the Jordan canonical form (over a field containing all the eigenvalues) for $phi$ considered as an $FF_p$-linear transformation of the $n$-dimensional $FF_p$-vector space $FF_p^n$.
+
+#solution[
+    Follow a similar construction, it suffices to consider the chraacteristic polynomial of $phi$.
+
+    However, since the degree of the characteristic polynomial is $p^n$, we have the minimal polynomial is the characteristic polynomial.
+
+    $x^p^n - 1$ is separable when $p$ does not divides $n$. 
+
+    Thus the Jordan canonical form is
+
+    $
+        mat(
+            zeta_1 , 0 , ... , 0 ;
+            0 , zeta_2 , ... , 0 ;
+            0 , 0 , ... , zeta_n ;
+        )
+    $
+
+    where $zeta_i$ are the $p^n$-th primitive root of unity.
+
+    When $p$ divides $n$, we have the minimal polynomial $x^q^p^k - 1^p^k = (x^q -1)^p^k$, and let $lambda_1,...,lambda_q$ be the roots of $x^q - 1$, we have the Jordan canonical form is
+
+    $
+        mat(
+            lambda_1 , 1 , ... , 0, 0 ;
+            0 , lambda_1 , ... , 0, 0 ;
+            0 , 0 , ... , lambda_q, 1 ;
+            0 , 0 , ... , 0, lambda_q ;
+        )
+    $
+
+    where each jordan block are size $p^k$.
+]
 
 
 = Wedderburn's Theorem on Finite Division Rings
@@ -91,7 +164,7 @@ Let $Z$ denote the center of $D$. Prove that $Z$ is a field containing $FF_p$ fo
 #solution[
     Because we know that the center of $D$ is finite and commutative, and thus is a finite field. Further, we know that any finite field containing some $FF_p$ for some prime $p$.
     
-    We can view $D$ as additive group, and thus $Z$ is the center of $D$,so the order of $D$ divides the order of $Z$.
+    We also know that $D$ is a finite dimensional vector space over $Z$, since the regular ring addition and multiplication can be used, and thus $D$ has order $q^n$ for some integer $n$.
 ]
 
 ==
@@ -99,8 +172,13 @@ Let $Z$ denote the center of $D$. Prove that $Z$ is a field containing $FF_p$ fo
 The nonzero elements $D^times$ of $D$ form a multiplicative group. For any $x in D^times$ shows that the elements of $D$ which commute with $x$ form a division ring which contains $Z$. Show that this division ring is of order $q^m$ for some integer $m$ and that $m < n$ if $x$ is not an element of $Z$.
 
 #solution[
-    Since $Z$ is the center, so all elements of $D^times$ commutex with $Z$ and thus form a division ring contains $Z$.
+    Since $Z$ is the center, so all elements of $D^times$ commute with $x$ will contain $Z$.
+
+    It suffices to verify that this is a ring, which follows from that we cannot goes from commute with $x$ to something not commute with $x$ by addition and multiplication.
+
+    Since this division ring is also a vector space over $Z$, we have its order equal to some $m$, and $m<n$ because if $m=n$ then this division ring has to be the whole ring and thus $x$ has to be in $Z$. 
 ]
+
 
 ==
 
@@ -112,9 +190,42 @@ $
 
 where $x_i$ are representatives of the distinct conjugacy classes in $D^times$ not contained in the center of $D^times$. Conclude that for each $i$, $abs(C_D^times (x_i))=q^(m_i)-1$ for some $m_i < n$.
 
+#solution[
+    We have the class equation for the group $D^times$ is
+
+    $
+        abs(Z(D)^times) + sum_(i=1)^r abs(D^times)/(abs(C_D^times (x_i))) = q^n-1 = (q-1) + sum_(i=1)^r (q^n -1)/(abs(C_D^times (x_i)))
+    $
+
+    Thus
+
+    $
+        sum (q^n -1)/(abs(C_D^times (x_i))) = q^(n-1)
+    $
+
+    From previous part we know that $abs(C_D^times (x_i))=q^(m_i)-1$ for some $m_i < n$.
+]
+
 ==
 
 Prove that since $(q^n-1)/(q^m_i = 1) = abs(D^times : C_D^times (x_i))$ is an integer then $m_i$ divides $n$. Conclude that $Phi_n (x)$ divides $(x^n-1)/(x^(m_i)-1)$ and hence that the integer $Phi_n (q)$ divides $(q^n-1)/(q^(m_i)-1)$ for $i=1,2,...,r$.
+
+#solution[
+    Since $(q^n-1)/(q^(m_i) - 1) = abs(D^times : C_D^times (x_i))$ is an integer
+    
+    Let $n = k m_i + r$
+
+    $
+        (q^n-1) - (q^r - 1) = q^n - q^r = q^(k m) - 1 = (q^m - 1) l
+    $ for some $l$.
+
+    Thus it is equivqlent to prove thqt $q^n - 1 | q^r - 1$ by euclideqn qlgorithm.
+
+    However since $n > r$ by construction, we hqve $q^n - 1 | q^r - 1 <=> q^r - 1 = 0 <=> r = 0$ which implies the claim.
+
+    
+
+]
 
 ==
 
@@ -124,18 +235,84 @@ Conclude that $n=1 <=> D=Z$.
 
 = Dirichlet's Theorem
 
-==
+== <dirichlet_1>
 
 #image("13.6.14.png")
+
+Suppose $p_1, p_2,..., p_k$ are the only primes the dividing values $P(n)$.
+
+Consider a integer $N$ such that $P(N) = a != 0$. Consider the polynomial $Q(x) = a^(-1) P(N + a p_1 p_2 ... p_k x)$.
+
+#lemma[
+    $ Q(x) in ZZ[x] $ 
+]
+
+#proof[
+    Since $P$ is a polynomial, we can write $P=b_1 x^n + b_2 x^(n-1) + ... b_(n+1)$. Then consider $P(N + a p_1 p_2...p_k x)$, by binomial theorem we have each terms being writeen as some product of $N$ and $a p_1 p_2...p_k x$. Any term involving the second part is certainly divisible by $a$, and the grouping of term that only contains $N$ is equal to $P(N)$, and by assumpition, is divisible by $a$ since $P(N) = a$. Therefore $Q(x) in ZZ[x]$.
+]
+
+#lemma[
+    $
+        Q(n) = 1
+    $
+]
+
+#proof[
+    We can show the following by a similar construction as above: #h(1fr)
+
+    $
+        Q(n) = P(N + n a p_1 p_2...p_k) / a equiv P(N) / a equiv 1 #h(1em) (mod p_1 p_2 ... p_k)
+    $
+]
+
+#corollary[
+    There are some $M in ZZ$ such that $Q(M)$ is coprime with $p_1 p_2...p_k$.
+]
+
+#proof[
+    It suffices to check that $Q(n)$ is not $1$ for some integer $n$. #h(1fr)
+
+    Assume $Q(n) = 1 forall n$, we have $Q$ is a degree $0$ polynomial, which is a contradiction because $Q = a^(-1) P(N + a p_1 ... p_k x)$, but $P$ has degree greater than $1$.
+]
+
+#corollary[
+    $P(N + a p_1 p_2...p_k M)$ is divisible by some prime $p$ not in $p_1 p_2...p_k$.
+]
+
+#proof[
+    This is trivial given that $Q(M)$ is coprime with $p_1 p_2...p_k$ and $P(N+a p_1 p_2...p_k M) = a Q(M)$.
+]
 
 ==
 
 #image("13.6.15.png")
 
+Since $a in ZZ$ satisfied $Phi_m(a) equiv 0 mod p$. We have $a$ is a root of $Phi_m$ in $FF_p$. Thus the order of $a mod p$ were less than $m$ and $exists d: a^d equiv 1 mod p$ for some $d | m$.
+
+Further we know that $x^m - 1 = product_(d | m) Phi_d (x) = Phi_m (x) product_(d | m \ d<m ) Phi_d (x)$.
+
+Since $a^d equiv 1 mod p$ and $d | m$, we have $Phi_d (a) equiv 0 mod p$.
+
+However this suggests that we have $x^m - 1$ is not separable because two of its factor contains $a$ as a root, which is a contradiction when $p$ does not divides $m$.
+
+Then since $p$ does not divides $m$, we have $a$ is relatively prime to $p$ because its order is $m$.
+
 ==
 
-Let $a in ZZ$. Show that if $p$ is an odd prime dividingg $Phi_m (a)$ then either $p$ divides $m$ or $p equiv 1 mod m$.
+Let $a in ZZ$. Show that if $p$ is an odd prime dividing $Phi_m (a)$ then either $p$ divides $m$ or $p equiv 1 mod m$.
+
+#solution[
+    If $p$ divides $Phi_m (a)$, then $a$ is a solution of $Phi_m$ under $FF_p$. From previous exercise we have shown that $a$ is relatively prime to $p$ and the order of $a$ in $(ZZ \/ p)^times$ is precisely $m$ if $p$ does not divides $m$.
+
+    Since we know that the order of an arbitary element of a group divides the order of the group, we have $m | p-1$.
+]
 
 ==
 
 Prove there are infinitely many primes $p$ with $p equiv 1 mod m$.
+
+#solution[
+    It suffices to find infinitely many pairs of $p,a$ such that $p$ divides $Phi_m (a)$ by previous part.
+
+    By @dirichlet_1 we know that for any monic polynomial $P$, there are infinitely many prime factors of the sequence $P(1), P(2), ...$. Thus for any $m$, there are infinitely many primes $p$ with such that it divides $Phi_m (a)$ for a sequences of $a$. Thus we know that we have infinitely many pair of $p$ and $a$ satisfying the condition we have for previous parts.
+]
