@@ -223,8 +223,7 @@ Prove that since $(q^n-1)/(q^m_i = 1) = abs(D^times : C_D^times (x_i))$ is an in
 
     However since $n > r$ by construction, we hqve $q^n - 1 | q^r - 1 <=> q^r - 1 = 0 <=> r = 0$ which implies the claim.
 
-    
-
+    Note that $Phi_n(q) = (x^n - 1)/(x-1)$, thus it suffices to check $x^(m_i)-1 | x-1$, which is always true.
 ]
 
 ==
@@ -232,6 +231,14 @@ Prove that since $(q^n-1)/(q^m_i = 1) = abs(D^times : C_D^times (x_i))$ is an in
 Prove that $Phi_n (q) = product_(zeta "primitive") (q-zeta)$ divides $q-1$. Prove that $abs(q-zeta) > q-1$ (complex absolute value) for any root of unity $zeta != 1$. [note that $1$ is the closest point on the unit circle in $CC$ to the point $q$ on the real line]
 
 Conclude that $n=1 <=> D=Z$.
+
+#solution[
+    We have $Phi_n (x) = product_(d | n) Phi_d = product_(zeta "primitive") (x-zeta)$. We have $Phi_n (q)$ divides $(q^n - 1)/(q^(m_i) - 1)$. Since we can have all kind of $m_i < n$, their LCM will be $q^(n-1)-1$, and thus $Phi_n (q) | q - 1$.
+
+    Since $q$ is prime, so $p > 1$ and $p in RR$. Therefore, since $zeta$ lies on the unit circle, and $1$ is the closest points to $p$ lying on the unit circle, $abs(q-zeta) > q - 1$.
+
+    Therefore, since $Phi_n (q) = product_(zeta "primitive") (x-zeta)$, $abs(Phi_n (q)) = product_(zeta "primitive") abs(x-zeta)$, and thus $n=1$, since it divides $q-1$.
+]
 
 = Dirichlet's Theorem
 
